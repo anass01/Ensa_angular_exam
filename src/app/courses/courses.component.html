@@ -1,0 +1,42 @@
+
+
+<div class="px-4 w-full mx-auto flex justify-between inline-flex items-center">
+  <span class="font-semibold text-gray-600 dark:text-gray-400">List of courses</span>
+  <button (click)="new()" type="button" class="py-[.688rem] px-4 inline-flex justify-center items-center gap-2 rounded-md border-2 border-gray-200 font-semibold text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:border-gray-700 dark:hover:border-blue-500">
+    New
+  </button>
+</div>
+
+<div class="flex flex-col">
+  <div class=" overflow-x-auto">
+    <div class="p-1.5 min-w-full inline-block align-middle">
+      <div class="overflow-hidden">
+        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead>
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Price</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Content</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Image</th>
+            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"></th>
+          </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+          <tr *ngFor="let Course of CoursesList">
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{Course.id}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{Course.title}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{Course.price}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{Course.content}}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200"><img class="max-h-[2rem]" [src]="Course.imgUrl"></td>
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex gap-1">
+              <a class="text-blue-500 hover:text-blue-700" [routerLink]="'/courses/edit/'+Course.id">Edit</a>|
+              <a class="text-blue-500 hover:text-blue-700" (click)="deleteItem(Course.id)">Delete</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
